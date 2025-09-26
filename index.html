@@ -285,6 +285,29 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
   border:1px solid var(--border);display:grid;place-items:center;cursor:pointer
 }
 .mini-prev{left:8px} .mini-next{right:8px}
+/* --- YouTube 썸네일 카드용 보강 --- */
+.project{
+  display:flex; gap:12px; align-items:center;
+  min-height:120px;            /* 카드 높이 통일 */
+}
+
+/* 기본 썸네일: 정사각형 */
+.thumb{
+  width:96px; aspect-ratio: 1 / 1;
+  border-radius:14px; border:1px solid var(--border);
+  background:#f2f3f5 center/cover no-repeat;
+  flex:0 0 auto;
+}
+
+/* 세로(숏츠) 썸네일: 9:16 */
+.thumb.short{
+  width:76px;                  /* 폭 살짝 줄여 균형 */
+  aspect-ratio: 9 / 16;
+  border-radius:12px;
+}
+
+/* 링크 텍스트 아래 들쭉날쭉 방지 */
+.project .mini{ line-height:1.45; }
 
   </style>
 </head>
