@@ -19,6 +19,27 @@
     a{color:var(--vitamin);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1080px;margin:0 auto;padding:24px}
+/* ====== My Daily Life 갤러리 ====== */
+.gallery {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr); /* PC: 4장 */
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* 모바일: 2장 */
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 정사각형 유지 */
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+}
 
     /* ======= TOP (제목 > SNS) ======= */
     .banner{position:relative;border-radius:28px;overflow:hidden;background:linear-gradient(135deg,#eaf7ff 0%, #eaf0ff 35%, #fff 100%);border:1px solid var(--border);}
