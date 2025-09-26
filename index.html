@@ -400,6 +400,46 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
     gap: 14px;
   }
 }
+/* ===== My Daily Life (일상 갤러리) ===== */
+#daily .gallery{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(4, minmax(0,1fr)); /* 데스크탑: 4칸 */
+}
+
+/* 태블릿/모바일 브레이크포인트 */
+@media (max-width: 900px){
+  #daily .gallery{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+}
+@media (max-width: 768px){
+  #daily .gallery{ grid-template-columns:repeat(2, minmax(0,1fr)); } /* 모바일: 2칸 */
+}
+
+/* 카드(정사각) – 배경은 안쪽 .ph 가 담당 */
+#daily .card{
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f3f4f6;
+}
+
+/* 정사각형 비율 유지 트릭 */
+#daily .card::before{
+  content:"";
+  display:block;
+  padding-top:100%;  /* 1:1 */
+}
+
+/* 실제 이미지는 .ph가 꽉 채움 */
+#daily .card .ph{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+}
+
+/* 제목 캡션 숨김(원하면 표시해도 됨) */
+#daily .card .cap{ display:none; }
 
   </style>
 </head>
