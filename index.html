@@ -308,6 +308,22 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
 
 /* 링크 텍스트 아래 들쭉날쭉 방지 */
 .project .mini{ line-height:1.45; }
+/* === 협업 미니 슬라이더 썸네일 크기/비율 === */
+#collab .mini-slider .thumb{
+  width: 120px;               /* 썸네일 가로 */
+  flex: 0 0 120px;            /* 줄바꿈/수축 방지 */
+  aspect-ratio: 16 / 9;       /* 기본 16:9 */
+  height: auto;               /* aspect-ratio로 높이 계산 */
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  background-color: #eef2f7;  /* 로딩 전에 빈 배경 */
+}
+
+/* 세로 숏츠(9:16)용 - thumb에 short 클래스를 추가했을 때만 적용 */
+#collab .mini-slider .thumb.short{
+  aspect-ratio: 9 / 16;
+}
 
   </style>
 </head>
@@ -499,37 +515,38 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
     <div class="mini-track" id="collabTrack">
 
       <!-- 슬라이드 1 -->
-      <a class="project" href="https://youtube.com/shorts/XD3K4S1dOe4?si=VaZCJYtkJXq-WqTM" target="_blank" rel="noopener">
-        <div class="thumb" style="https://img.youtube.com/vi/XD3K4S1dOe4/maxresdefault.jpg
-"></div>
-        <div>
-          <div style="font-weight:700">브랜드 협업 콘텐츠</div>
-          <p class="mini">제품/숙소 체험 기반 리뷰 · 광고/협찬 제작</p>
-          <span style="color:var(--vitamin)">영상 1 보기</span>
-        </div>
-      </a>
+<a class="project" href="https://youtube.com/shorts/XD3K4S1dOe4" target="_blank" rel="noopener">
+  <div class="thumb short"
+       style="background-image:url('https://img.youtube.com/vi/XD3K4S1dOe4/hqdefault.jpg')"></div>
+  <div>
+    <div style="font-weight:700">브랜드 협업 콘텐츠</div>
+    <p class="mini">제품/숙소 체험 기반 리뷰 · 광고/협찬 제작</p>
+    <span style="color:var(--vitamin)">영상 1 보기</span>
+  </div>
+</a>
 
-      <!-- 슬라이드 2 -->
-      <a class="project" href="https://youtube.com/shorts/9qQB4A4SVsU?si=R0N5IGrXVzBgFxrO" target="_blank" rel="noopener">
-        <div class="thumb" style="https://img.youtube.com/vi/9qQB4A4SVsU/maxresdefault.jpg
-"></div>
-        <div>
-          <div style="font-weight:700">브랜드 협업 콘텐츠</div>
-          <p class="mini">현장 브이로그 · 체험 후기</p>
-          <span style="color:var(--vitamin)">영상 2 보기</span>
-        </div>
-      </a>
+<!-- 슬라이드 2 -->
+<a class="project" href="https://youtube.com/shorts/9qQB4A4SVsU" target="_blank" rel="noopener">
+  <div class="thumb short"
+       style="background-image:url('https://img.youtube.com/vi/9qQB4A4SVsU/hqdefault.jpg')"></div>
+  <div>
+    <div style="font-weight:700">브랜드 협업 콘텐츠</div>
+    <p class="mini">현장 브이로그 · 체험 후기</p>
+    <span style="color:var(--vitamin)">영상 2 보기</span>
+  </div>
+</a>
 
-      <!-- 슬라이드 3 -->
-      <a class="project" href="https://www.youtube.com/shorts/KsivTcwmBPk" target="_blank" rel="noopener">
-        <div class="thumb" style="https://img.youtube.com/vi/KsivTcwmBPk/maxresdefault.jpg
-"></div>
-        <div>
-          <div style="font-weight:700">브랜드 협업 콘텐츠</div>
-          <p class="mini">제품 하이라이트 숏폼</p>
-          <span style="color:var(--vitamin)">영상 3 보기</span>
-        </div>
-      </a>
+<!-- 슬라이드 3 -->
+<a class="project" href="https://youtube.com/shorts/KsivTcwmBPk" target="_blank" rel="noopener">
+  <div class="thumb short"
+       style="background-image:url('https://img.youtube.com/vi/KsivTcwmBPk/hqdefault.jpg')"></div>
+  <div>
+    <div style="font-weight:700">브랜드 협업 콘텐츠</div>
+    <p class="mini">제품 하이라이트 숏폼</p>
+    <span style="color:var(--vitamin)">영상 3 보기</span>
+  </div>
+</a>
+
 
     </div>
 
