@@ -353,6 +353,32 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
 
 /* 캡션(“일상사진1” 같은 제목) 스타일(선택) */
 #daily .cap{ font-weight:700; margin:6px 2px 10px; }
+/* ===== Daily Gallery 레이아웃 ===== */
+#gallery .gallery{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 모바일: 2칸 */
+  gap: 12px;
+}
+
+#gallery .gallery img{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;       /* 비율 고정 (원하면 1/1 도 가능) */
+  object-fit: cover;         /* 박스 안에 꽉 채우기 */
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  display: block;
+  user-select: none;
+  pointer-events: none;      /* 클릭/확대 비활성화 */
+}
+
+/* 데스크탑: 4칸 */
+@media (min-width: 900px){
+  #gallery .gallery{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
 
   </style>
 </head>
@@ -610,14 +636,14 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
   <h2 class="section-title">My Daily Life <small>일상 갤러리</small></h2>
 
   <div class="gallery">
-    <div class="card"><div class="cap">일상사진1</div><div class="ph" style="background-image:url('./daily01.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진2</div><div class="ph" style="background-image:url('./daily02.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진3</div><div class="ph" style="background-image:url('./daily03.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진4</div><div class="ph" style="background-image:url('./daily04.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진5</div><div class="ph" style="background-image:url('./daily05.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진6</div><div class="ph" style="background-image:url('./daily06.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진7</div><div class="ph" style="background-image:url('./daily07.jpg')"></div></div>
-    <div class="card"><div class="cap">일상사진8</div><div class="ph" style="background-image:url('./daily08.jpg')"></div></div>
+    <div class="ph" style="background-image:url('./daily01.jpg')"></div></div>
+   </div><div class="ph" style="background-image:url('./daily02.jpg')"></div></div>
+  </div><div class="ph" style="background-image:url('./daily03.jpg')"></div></div>
+    </div><div class="ph" style="background-image:url('./daily04.jpg')"></div></div>
+    </div><div class="ph" style="background-image:url('./daily05.jpg')"></div></div>
+    </div><div class="ph" style="background-image:url('./daily06.jpg')"></div></div>
+    </div><div class="ph" style="background-image:url('./daily07.jpg')"></div></div>
+    </div><div class="ph" style="background-image:url('./daily08.jpg')"></div></div>
   </div>
 </section>
 
