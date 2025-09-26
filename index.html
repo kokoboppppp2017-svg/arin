@@ -261,6 +261,31 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
   .chips{ display:none; } /* 필요시 주석 처리 */
 }
 
+    /* ===== Mini Card Slider (for collab) ===== */
+.mini-slider{position:relative}
+.mini-viewport{overflow:hidden;border-radius:var(--radius); }
+.mini-track{display:flex;transition:transform .5s ease}
+.mini-slider a.project{
+  display:flex; gap:12px; align-items:center;
+  background:#fff; border:1px solid var(--border); border-radius:14px;
+  padding:14px; text-decoration:none; color:inherit; flex:0 0 100%;
+}
+.mini-slider .thumb{
+  width:80px;height:80px;border-radius:12px;border:1px solid var(--border);
+  background:#f0f0f0;background-size:cover;background-position:center;
+  flex-shrink:0;
+}
+.mini-slider .mini   {font-size:14px;color:var(--muted);margin:4px 0}
+.mini-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.mini-dot{width:8px;height:8px;border-radius:999px;background:#cbd5e1;opacity:.7}
+.mini-dot.active{opacity:1;background:#2563eb}
+.mini-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.95);
+  border:1px solid var(--border);display:grid;place-items:center;cursor:pointer
+}
+.mini-prev{left:8px} .mini-next{right:8px}
+
   </style>
 </head>
 <body>
@@ -445,14 +470,51 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
     <section id="collab">
       <h2 class="section-title">Collaboration & Contents <small>협업 & 콘텐츠</small></h2>
       <div class="grid cols-3">
-        <div class="project">
-          <div class="thumb" style="background-image:url('./collab1.jpg');background-size:cover;background-position:center"></div>
-          <div>
-            <div style="font-weight:700">브랜드 협업 콘텐츠</div>
-            <p class="mini">제품/숙소 체험 기반 리뷰 · 광고/협찬 제작</p>
-            <a href="#" target="_blank" rel="noopener">링크 보기</a>
-          </div>
+      <!-- ▶ mini slider: 브랜드 협업 콘텐츠 -->
+<div class="mini-slider" id="collabSlider">
+  <div class="mini-viewport">
+    <div class="mini-track" id="collabTrack">
+
+      <!-- 슬라이드 1 -->
+      <a class="project" href="https://youtube.com/여기1" target="_blank" rel="noopener">
+        <div class="thumb" style="background-image:url('./collab1.jpg')"></div>
+        <div>
+          <div style="font-weight:700">브랜드 협업 콘텐츠</div>
+          <p class="mini">제품/숙소 체험 기반 리뷰 · 광고/협찬 제작</p>
+          <span style="color:var(--vitamin)">영상 1 보기</span>
         </div>
+      </a>
+
+      <!-- 슬라이드 2 -->
+      <a class="project" href="https://youtube.com/여기2" target="_blank" rel="noopener">
+        <div class="thumb" style="background-image:url('./collab2.jpg')"></div>
+        <div>
+          <div style="font-weight:700">브랜드 협업 콘텐츠</div>
+          <p class="mini">현장 브이로그 · 체험 후기</p>
+          <span style="color:var(--vitamin)">영상 2 보기</span>
+        </div>
+      </a>
+
+      <!-- 슬라이드 3 -->
+      <a class="project" href="https://youtube.com/여기3" target="_blank" rel="noopener">
+        <div class="thumb" style="background-image:url('./collab3.jpg')"></div>
+        <div>
+          <div style="font-weight:700">브랜드 협업 콘텐츠</div>
+          <p class="mini">제품 하이라이트 숏폼</p>
+          <span style="color:var(--vitamin)">영상 3 보기</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- 좌우 버튼(선택사항: 필요 없으면 이 두 줄 삭제) -->
+    <div class="mini-nav mini-prev" id="collabPrev">❮</div>
+    <div class="mini-nav mini-next" id="collabNext">❯</div>
+  </div>
+
+  <div class="mini-dots" id="collabDots"></div>
+</div>
+
         <div class="project">
           <div class="thumb" style="background-image:url('./collab2.jpg');background-size:cover;background-position:center"></div>
           <div>
@@ -521,6 +583,42 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
     pUpdateDots();
     let pTimer=setInterval(()=>pGo(pi+1), 3500);
     pTrack.addEventListener('pointerdown', ()=>clearInterval(pTimer));
+    /* ===== Mini Card Slider (collab) ===== */
+(function(){
+  const track = document.getElementById('collabTrack');
+  const slides = [...track.children];
+  const dotsWrap = document.getElementById('collabDots');
+  const btnPrev = document.getElementById('collabPrev');
+  const btnNext = document.getElementById('collabNext');
+  let i = 0, n = slides.length;
+
+  function go(k){
+    i = (k + n) % n;
+    track.style.transform = `translateX(-${i*100}%)`;
+    updateDots();
+  }
+  function updateDots(){
+    dotsWrap.innerHTML = '';
+    for(let k=0;k<n;k++){
+      const d = document.createElement('div');
+      d.className = 'mini-dot' + (k===i ? ' active':'');
+      d.onclick = ()=>go(k);
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  btnPrev?.addEventListener('click', ()=>go(i-1));
+  btnNext?.addEventListener('click', ()=>go(i+1));
+  updateDots();
+
+  // 자동 재생 (4초)
+  let timer = setInterval(()=>go(i+1), 4000);
+  // 사용자 조작 시 자동재생 잠깐 멈춤
+  ['click','pointerdown','touchstart','mouseenter'].forEach(ev=>{
+    track.addEventListener(ev, ()=>{ clearInterval(timer); timer=setInterval(()=>go(i+1), 5000); }, {passive:true});
+  });
+})();
+
   </script>
 </body>
 </html>
