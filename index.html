@@ -357,13 +357,15 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
   border-radius:18px;
   padding:14px;
 }
-#daily .ph{
-  width:100%;
-  aspect-ratio:3 / 4;           /* ← 비율. 1 / 1 로 바꾸면 정사각 */
-  border-radius:14px;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+#daily .card .ph {
+  position: absolute;
+  inset: 0;
+  background-size: contain; /* contain으로 변경 */
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  background-color: #fff; /* 테두리 배경 */
+}
 
   /* 클릭/드래그/길게눌러 저장 등 최대한 방지 */
   pointer-events:none;
