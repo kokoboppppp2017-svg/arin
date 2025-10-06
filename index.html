@@ -11,7 +11,7 @@
   <style>
     :root{
       --bg:#ffffff; --text:#0f172a; --muted:#64748b; --card:#f8fafc; --border:#e5e7eb;
-      --vitamin:#2563eb; --mint:#22c55e; --yt:#ff0033; --ig:#d62976; --blog:#111827; --mail:#2563eb; --tel:#10b981;
+      --vitamin:#2563eb; --mint:#22c55e; --yt:#ff0033; --ig:#d62976; --blog:#111827; --mail:#2563eb; --kakao:#FEE500;
       --radius:18px;
     }
     *{box-sizing:border-box}
@@ -60,7 +60,13 @@
     .btn.insta{color:var(--ig)} .btn.insta:hover{background:rgba(214,41,118,.08)}
     .btn.blog{color:var(--blog)} .btn.blog:hover{background:rgba(17,24,39,.06)}
     .btn.mail{color:var(--mail)} .btn.mail:hover{background:rgba(37,99,235,.08)}
-    .btn.tel{color:var(--tel)} .btn.tel:hover{background:rgba(16,185,129,.10)}
+   .btn.kakao {
+  color: var(--kakao);
+}
+.btn.kakao:hover {
+  background: rgba(254,229,0,.10); /* 밝은 노란색 hover 효과 */
+}
+
     @media(max-width:720px){
       .brandline{font-size:28px}
       .subtitle{font-size:15px}
@@ -464,9 +470,13 @@ section{ margin-top: clamp(16px, 5vw, 28px); }
           <a class="btn youtube" href="https://youtube.com/@dotorin33?feature=shared" target="_blank" rel="noopener">YouTube</a>
           <a class="btn insta" href="https://instagram.com/livelyrin" target="_blank" rel="noopener">Instagram</a>
           <a class="btn blog" href="https://m.blog.naver.com/lin_0_0_" target="_blank" rel="noopener">Blog</a>
-         <a class="btn tel" href="tel:010-0000-0000">Call</a>
-        </div>
-      </div>
+        <a class="btn kakao" 
+     href="https://open.kakao.com/o/swRnsGVh" 
+     target="_blank" 
+     rel="noopener">
+     Open KakaoTalk
+  </a>
+</div>
     </section>
 
     <!-- Photo slider (3:4) -->
